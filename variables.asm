@@ -122,6 +122,7 @@ Fire_Demon = $FFFFFB50	; byte: flag: ??? starts with 1 and subtract 1 after each
 Allow_Pausing = $FFFFFB56	; byte: flag
 Background_NoScrollFlag = $FFFFFB4A	; byte (flag): 0 = scroll level background, 1 = no scrolling
 Number_UFOs_OnScreen = 	$FFFFFB66	; word
+Number_Skulls_OnScreen = $FFFFFB70 ; word: number of Juggernaut's Skulls active on screen
 Addr_Current_Demo_Keypress = $FFFFFBC4	; word: Pointer to current Keypress in Demo
 Demo_Mode_flag = 	$FFFFFBC9	; byte (for input)
 Game_Mode = 		$FFFFFBCA	; word
