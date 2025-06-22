@@ -7688,6 +7688,7 @@ loc_757E:
 	subq.w	#1,$1E(a1)
 	bsr.w	sub_B41C
 	clr.w	(Number_Skulls_OnScreen).w
+	clr.w	(Number_Skulls_OnScreen).w
 	move.w	($FFFFFA78).w,d7
 	moveq	#$10,d6
 	move.w	(Current_Helmet_Available).w,d5
@@ -7802,6 +7803,7 @@ loc_7718:
 	bne.s	loc_7742
 	tst.b	is_animated(a3)
 	bne.s	loc_7772
+	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	bge.w	loc_7772
 	move.w	#$FFFF,a0
@@ -8577,6 +8579,7 @@ loc_7E48:
 	moveq	#1,d0
 	bsr.w	sub_B41C
 	bsr.w	sub_DB22
+	clr.w	(Number_Skulls_OnScreen).w
 	clr.w	(Number_Skulls_OnScreen).w
 	move.l	(Addr_GfxObject_Kid).w,a4
 	clr.w	$22(a4)
@@ -9603,6 +9606,7 @@ loc_876A:
 	move.w	#$FFFF,a0
 	jsr	(j_Allocate_ObjectSlot).w
 	move.l	#JuggernautSkull_Init,4(a0)
+	move.l	#JuggernautSkull_Init,4(a0)
 	move.w	x_pos(a3),$44(a0)
 	move.w	y_pos(a3),$46(a0)
 	move.b	x_direction(a3),$48(a0)
@@ -9621,6 +9625,9 @@ loc_87A0:
 
 ; =============== S U B	R O U T	I N E =======================================
 
+;sub_87B0:
+JuggernautSkull_Init:
+	addq.w	#1,(Number_Skulls_OnScreen).w
 ;sub_87B0:
 JuggernautSkull_Init:
 	addq.w	#1,(Number_Skulls_OnScreen).w
@@ -9808,8 +9815,10 @@ loc_897C:
 
 loc_899C:
 	tst.w	(Number_Skulls_OnScreen).w
+	tst.w	(Number_Skulls_OnScreen).w
 	beq.s	loc_89A8
 	bmi.s	loc_89A8
+	subq.w	#1,(Number_Skulls_OnScreen).w
 	subq.w	#1,(Number_Skulls_OnScreen).w
 
 loc_89A8:
@@ -9824,6 +9833,7 @@ loc_89A8:
 	jsr	(j_Init_Animation).w
 	jsr	(j_Hibernate_UntilAnimFinished).w
 	jmp	(j_Delete_CurrentObject).w
+; End of function JuggernautSkull_Init
 ; End of function JuggernautSkull_Init
 
 
@@ -10133,6 +10143,7 @@ loc_8D2C:
 	bne.w	loc_8D58
 	tst.b	is_animated(a3)
 	bne.w	loc_8D72
+	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	bge.w	loc_8D72
 	move.w	#0,a0
@@ -13164,6 +13175,7 @@ loc_A87A:
 	bne.w	loc_A8A6
 	tst.b	is_animated(a3)
 	bne.w	loc_A8D6
+	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	cmpi.w	#8,(Number_Skulls_OnScreen).w
 	bge.w	loc_A8D6
 	move.w	#0,a0
